@@ -269,8 +269,8 @@ def run_infer_nusc(args):
     print(f'Inference with {n_frames} frames')
     noise_shape = [args.bs, channels, n_frames, h, w]
 
-    # root_dir = "/data/wangxd/IJCAI25/Ablation/Dynamic"
-    root_dir = "./test_infer3"
+    root_dir = "/data/wangxd/IJCAI25/Ablation/Dynamic2"
+    # root_dir = "./test_infer4"
     os.makedirs(root_dir, exist_ok=True)
 
     train_dataset = NuscenesDatasetAllframesFPS10OneByOneForValidate(
@@ -332,11 +332,11 @@ if __name__ == '__main__':
 
     parser.add_argument("--val_s", type=int, default=0) 
     parser.add_argument("--val_e", type=int, default=10) 
-    parser.add_argument("--rollout", type=int, default=5) 
+    parser.add_argument("--rollout", type=int, default=8) 
 
     parser.add_argument("--ckpt_path", type=str, default=f"/data/wuzhirong/hf-models/DynamiCrafter_{width}/model.ckpt", help="checkpoint path")
     parser.add_argument("--config", type=str, default=f"./configs/inference_{width}_v1.0.yaml", help="config (yaml) path")
-    parser.add_argument("--ddim_steps", type=int, default=30, help="steps of ddim if positive, otherwise use DDPM",)
+    parser.add_argument("--ddim_steps", type=int, default=40, help="steps of ddim if positive, otherwise use DDPM",)
     parser.add_argument("--ddim_eta", type=float, default=1.0, help="eta for ddim sampling (0.0 yields deterministic sampling)",)
     parser.add_argument("--bs", type=int, default=1, help="batch size for inference, should be one")
     parser.add_argument("--height", type=int, default=height, help="image height, in pixel space")
